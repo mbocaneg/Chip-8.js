@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'karmatic' ;
+    src: url('/resources/fonts/ka1.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'joystix' ;
+    src: url('/resources/fonts/joystix\ monospace.ttf') format('truetype');
+}
+
+.instructions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+    width: 640px;
+    height: 200px;
+    color: white;
+    /* background-color: black; */
+
+    font-family: "joystix";
+}
+
+.header {
+    height: 15vh;
+    width: 100vw;
+    /* background-color: white; */
+    background-color: black;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+
+    font-family: 'karmatic';font-size: 40px;
+    color: rgb(242,34,255);
+
+    /* border-bottom: 10px solid gray; */
+    border-bottom: 3px solid rgb(242,34,255);
+
+}
+.header > p {
+    margin-left: 40px;
+}
+.header > a {
+    font-family: 'joystix';font-size: 20px;
+    margin-right: 35px;
+    color: white;
+}
+
+.game-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "joystix";
+
+    color: white;
+}
+.game-select > p {
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(190, 190, 190); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)), 
+        url(../resources/imgs/joystick.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#canvas {
+    /* margin: 20px; */
+    border: 3px solid rgb(242,34,255);
+};
+
+
+
