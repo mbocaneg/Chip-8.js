@@ -12,7 +12,6 @@ var tim = new Timers();
 
 var c8 = new Chip8(gfx, kb, tim);
 
-var exec;
 var pool = new Array(5);
 
 function run() {
