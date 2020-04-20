@@ -1,3 +1,4 @@
+// Sprite values for characters 0-9, A-F
 const CHIP8_FONT = [
   0xF0, 0x90, 0x90, 0x90, 0xF0, //0
   0x20, 0x60, 0x20, 0x20, 0x70, //1
@@ -20,6 +21,8 @@ const CHIP8_FONT = [
 export class Chip8 {
 
   constructor(graphics, keyboard, timer) {
+
+    // Bind to graphics, timers, and keyboard objects
     this.graphics = graphics
     this.graphics.chip8 = this;
 
@@ -30,31 +33,45 @@ export class Chip8 {
     this.keyboard.chip8 = this;
     this.keyboard.init();
 
+    // Pause and halt flages
     this.pause = false;
     this.halt = false;
 
+    // Program counter and current program counter value
     this.pc = 0x0;
     this.currentPc = 0x0;
 
+    // Current instruction
     this.instruction = 0x0000;
 
+    // Chip8 memory bank
     this.memory = new Array(4096);
 
+    // V register bank
     this.V = new Array(16);
+
+    // I register
     this.I = 0x0000;
 
+    // stack and stack pointer
     this.stack = new Array(16);
     this.sp = 0x0000;
 
+    // values of the delay and sound timers
     this.delay = 0x00;
     this.sound = 0x00;
 
+    // register that hold keypresses
     this.regKey = 0;
+
+    // graphics buffer of size 32X64 bits, represented here
+    // as a 2d array of dimensions 8 X 32.
     this.display = [];
     for (let i = 0; i < 8; i++) {
       this.display[i] = new Array(32);
     };
 
+    // opcode fields
     this.X = 0;
     this.Y = 0;
     this.N = 0;
@@ -110,8 +127,6 @@ export class Chip8 {
       this.N = (this.instruction & 0x000F);
       this.NN = (this.instruction & 0x00FF);
       this.NNN = (this.instruction & 0x0FFF);
-
-      // console.log("PC: " + this.currentPc.toString(16) + " | " + "INSTRUCTION: "+ this.instruction.toString(16));
 
       this.decode();
 
@@ -327,7 +342,8 @@ export class Chip8 {
     this.V[this.X] = this.NN & (rand & 0xFF);
   };
 
-
+  // functions that checks if a pixel at pos x, y is set.
+  // returns true if it set, false otherwise
   pixelTest = (a, b) => {
     a = Math.abs(a % 64);
     b = Math.abs(b % 32);
@@ -340,6 +356,8 @@ export class Chip8 {
     else
       return true;
   };
+
+  // function that XOR's the value of a pixel at pos x, y
   pixelXor = (a, b) => {
     a = Math.abs(a % 64);
     b = Math.abs(b % 32);
@@ -374,7 +392,8 @@ export class Chip8 {
 
   };
 
-
+  // function that checks if a key(0-F) on the hex keypad
+  // is set. Returns true if set, false otherwise
   keyTest = (k) => {
     let keystate = this.regKey & (1 << (k));
     if (keystate == 0)
@@ -411,6 +430,7 @@ export class Chip8 {
 
       /* FX0A - A key press is awaited, and then stored in VX. (Blocking Operation.
       * All instruction halted until next key event */
+      // TODO: NOT WORKING PROPERLY. FIX THIS!!
       case 0x0A:
         // let wait = true;
 

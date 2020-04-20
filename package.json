@@ -1,0 +1,24 @@
+{
+  "name": "Chip-8.js",
+  "version": "1.0.0",
+  "description": "A Javascript web based software core for the Chip-8.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbocaneg/Chip-8.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbocaneg/Chip-8.js/issues"
+  },
+  "homepage": "https://github.com/mbocaneg/Chip-8.js#readme",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}
